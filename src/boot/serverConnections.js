@@ -16,7 +16,7 @@ export default async () => {
     if (user) {
       window.user = user;
       localStorage.setItem('user', JSON.stringify(user.uid))
-      console.log(`%c${window.user.uid}`, "font-size: 30px; color: red;")
+      console.log(`%c${window.user.uid}`, "font-size: 30px; color: green;")
       console.log(user)
 
     } else {

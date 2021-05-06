@@ -1,14 +1,20 @@
 <template>
-  <div class="flex flex-center">
-    <div style="width: 350px">
-      <q-input v-model="message"/>
-    </div>
-   <p>{{message}}</p>
+  <div  class="container">
+    <div class="item firestore">
+      <q-input label="send message" v-model="message"  style="width: 350px"/>
       <q-btn label="Send Message To Firestore" @click="sendMessage(message)"/>
+    </div>
+    <div class="item auth">
       <q-btn label="Register With Google" @click="registerWithGoogle"/>
-
+    </div>
+    <div class="item functions">
+      <q-input label="add number" type="number" v-model="number" style="width: 350px"/>
+      <q-btn label="send to cloud function" @click="sendToCloud(number)"/>
+    </div>
   </div>
 </template>
+
+
 
 <script>
 import fb from '../middleware/firebase';
@@ -16,7 +22,8 @@ export default {
   name: 'PageIndex',
   data() {
     return {
-      message: ''
+      message: '',
+      number: 0
     }
   },
   methods: {
@@ -27,7 +34,6 @@ export default {
 
     .then((result) => {
           var credential = result.credential;
-
           // This gives you a Google Access Token. You can use it to access the Google API.
           var token = credential.accessToken;
           // The signed-in user info.
@@ -47,7 +53,28 @@ export default {
 
     sendMessage(message) {
       fb.firebase.firestore().collection(`test`).doc().set({message})
+    },
+    async sendToCloud(number) {
+      const func = fb.firebase.functions().httpsCallable('multiNumber')
+      const multiNumber = await func({number})
+      console.log(`%c${multiNumber.data}`,  "font-size: 30px; color: pink;" )
     }
   }
 }
 </script>
+
+<style scoped>
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.item {
+  padding: 2em;
+  background: rgba(100,100,100,0.4);
+}
+
+</style>
