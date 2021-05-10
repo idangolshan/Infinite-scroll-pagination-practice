@@ -1,6 +1,7 @@
 
 const routes = [
   { path: '/flex', component: () => import('pages/flex.vue') },
+  { path: '/courses', component: () => import('pages/courses.vue') },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),

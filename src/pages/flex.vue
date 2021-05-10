@@ -14,133 +14,7 @@
         <input>
         <input>
         <input>
-      </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div> <div class="form q-pa-md flex__col-center">
-      <h5>SISO's FORM</h5>
-      <input>
-      <input>
-      <input>
-      <input>
-    </div>
+      </div>
     </div>
 
   </div>
@@ -173,7 +47,7 @@ input {
  margin: 10px;
 }
 .form:focus-within > input:hover {
-  background: white;
+  background: pink;
   outline: none;
   border: 2px solid black;
 }
