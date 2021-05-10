@@ -1,11 +1,13 @@
 
 const routes = [
+  { path: '/flex', component: () => import('pages/flex.vue') },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '/functions', component: () => import('pages/Index.vue') },
       { path: '/firestore', component: () => import('pages/Firestore.vue') },
+
     ]
   },
 
