@@ -1,10 +1,19 @@
 <template>
-  <div>
-  <header>
-    <span>icon</span>
-    <span>icon</span>
-    <span>icon</span>
+  <div class="page">
+
+    <header v-bind:class="{scroll}">
+    <div>
+      <q-btn flat icon="menu"/>
+    </div>
+    <div>
+      <span>LOGO</span>
+    </div>
+    <div>
+      <q-btn flat icon="shopping_cart"/>
+    </div>
   </header>
+
+
 
     <div class="flex__container">
 
@@ -22,21 +31,47 @@
 
 <script>
 export default {
-  name: "flex"
+  name: "flex",
+
+  data(){
+    return {
+      scroll: false
+    }
+  },
+
+  created() {
+    addEventListener('scroll', ()=> {
+        window.scrollY > 10 ? this.scroll = true : this.scroll = false;
+    })
+  }
+
 }
 </script>
 
 <style scoped>
-.flex__container {
-  flex-wrap: wrap;
+.page {
+  height: 200vh;
 }
+
 header {
+  transition: 1s;
+  height: 80px;
+  background: pink;
   display: flex;
   justify-content: space-between;
-  color: #dddddd;
-  background: #1976D2;
-  font-size: 20px;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
+
+header.scroll {
+  transition: 1s;
+  transform: translateY(-100%);
+}
+
+
 
 .form {
   background: #ddd;
