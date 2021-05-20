@@ -6,6 +6,7 @@
     </div>
     <div class="item auth">
       <q-btn label="Register With Google" @click="registerWithGoogle"/>
+      <q-btn label="SignOut" @click="logout"/>
     </div>
     <div class="item functions">
       <q-input label="add number" type="number" v-model="number" style="width: 350px"/>
@@ -38,6 +39,8 @@ export default {
           var token = credential.accessToken;
           // The signed-in user info.
           var user = result.user;
+
+          localStorage.setItem('practice', JSON.stringify(user.uid));
           // ...
         }).catch((error) => {
         // Handle Errors here.
@@ -49,6 +52,11 @@ export default {
         var credential = error.credential;
         // ...
       });
+    },
+
+    logout() {
+      fb.firebase.auth().signOut();
+      localStorage.setItem('practice', JSON.stringify(null));
     },
 
     sendMessage(message) {

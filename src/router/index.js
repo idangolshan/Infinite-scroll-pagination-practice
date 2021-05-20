@@ -26,5 +26,21 @@ export default function (/* { store, ssrContext } */) {
     base: process.env.VUE_ROUTER_BASE
   })
 
+  const admins = ['SbbazknQxvNGR3c9J5w32bDci9H22'];
+
+  Router.beforeEach((to,from,next)=> {
+    const user = JSON.parse(localStorage.getItem('practice'));
+    const adminPage = to.name.startsWith('admin');
+    const admin = admins.includes(user);
+
+
+
+    if(!user && to.meta.auth) {
+      next('/');
+    } else if (user && adminPage && !admin) {
+      next('/flex');
+    }  else next();
+  })
+
   return Router
 }

@@ -1,14 +1,14 @@
 
 const routes = [
-  { path: '/flex', component: () => import('pages/flex.vue') },
-  { path: '/courses', component: () => import('pages/courses.vue') },
+  { path: '/flex', name:'flex', meta:{auth:true} ,component: () => import('pages/flex.vue') },
+  { path: '/courses', name:'courses',meta:{auth:true}, component: () => import('pages/courses.vue') },
+  { path: '/admin', name:'admin-back',meta:{auth:true}, component: () => import('pages/AdminPage.vue') },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '/functions', component: () => import('pages/Index.vue') },
-      { path: '/firestore', component: () => import('pages/Firestore.vue') },
-
+      { path: '/', name:'functions',meta:{auth:false}, component: () => import('pages/Index.vue') },
+      { path: '/firestore', name:'firestore',meta:{auth:true}, component: () => import('pages/Firestore.vue') },
     ]
   },
 

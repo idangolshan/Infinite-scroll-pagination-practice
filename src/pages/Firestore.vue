@@ -10,6 +10,10 @@
     <q-btn @click="updateItem(item, id)" label="update item"/>
 
     <h4>{{id}}</h4>
+
+    <div style="height: 100px; width: 100px">
+      <q-btn label="try to delete collection" @click="deleteColection"/>
+    </div>
   </div>
 
 </div>
@@ -57,6 +61,9 @@ export default {
       const ref = `items/${user.uid}/item-one`;
       fbi.firebase.firestore().collection(ref).doc(id).update({name: fbi.firebase.firestore.FieldValue.delete()})
     },
+    deleteColection() {
+      fbi.firebase.firestore().collection('Cloud').doc('data')
+    }
   }
 }
 </script>
