@@ -1,5 +1,5 @@
 import firebaseInstance from '../middleware/firebase'
-
+console.log('fixed')
 export default async () => {
   const config = {
     apiKey: "AIzaSyCmdJEi5JIlzmpg4fRh7R49fDMGX9DDmkQ",
