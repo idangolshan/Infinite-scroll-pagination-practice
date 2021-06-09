@@ -2,14 +2,6 @@ import firebaseInstance from '../middleware/firebase'
 
 export default async () => {
   const config = {
-    // apiKey: "AIzaSyA_w8bhVSK7TbjN4p4ZAISLcvyLDm4A8vY",
-    // authDomain: "flash-point-app.firebaseapp.com",
-    // databaseURL: "https://flash-point-app-default-rtdb.europe-west1.firebasedatabase.app",
-    // projectId: "flash-point-app",
-    // storageBucket: "flash-point-app.appspot.com",
-    // messagingSenderId: "531955625983",
-    // appId: "1:531955625983:web:96461dd59e55a387cb41ca",
-    // measurementId: "G-SEH86V2VRP"
     apiKey: "AIzaSyCmdJEi5JIlzmpg4fRh7R49fDMGX9DDmkQ",
     authDomain: "flashdev-practice.firebaseapp.com",
     projectId: "flashdev-practice",

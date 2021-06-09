@@ -38,7 +38,7 @@ export default function (/* { store, ssrContext } */) {
     // } else if (user && adminPage && !admin) {
     //   next('/flex');
     // }  else
-
+    console.log(`%cHELLO OFEK`, "font-size:30px;background: red;")
     /*
     * if user not exist push to the login page.
     * if user exist, push to home.
