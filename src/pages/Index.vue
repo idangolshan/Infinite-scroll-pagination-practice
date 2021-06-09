@@ -1,8 +1,8 @@
 <template>
   <div  class="container">
     <div class="item firestore">
-      <q-input label="send message" v-model="message"  style="width: 350px"/>
-      <q-btn label="Send Message To Firestore" @click="sendMessage(message)"/>
+      <q-input label="HACK FIRESTORE" v-model="message"  style="width: 350px"/>
+      <q-btn label="Send Message To Firestore" @click="tryToHuck(message)"/>
     </div>
     <div class="item auth">
       <q-btn label="Register With Google" @click="registerWithGoogle"/>
@@ -21,6 +21,13 @@
 import fb from '../middleware/firebase';
 export default {
   name: 'PageIndex',
+  created() {
+    fb.firebase.firestore().collection('courses').doc('N12VJ5EiqmgVR3QPbbhy')
+    .get()
+    .then(r => console.log(r.data()))
+    .catch(e => console.log(e.message))
+    },
+
   data() {
     return {
       message: '',
@@ -66,8 +73,14 @@ export default {
       const func = fb.firebase.functions().httpsCallable('multiNumber')
       const multiNumber = await func({number})
       console.log(`%c${multiNumber.data}`,  "font-size: 30px; color: pink;" )
+    },
+    tryToHuck(message) {
+      fb.firebase.firestore().collection('courses').doc('4W31VKbEhct2NmbeNxQr')
+        .collection('permissions').doc().set({message})
+      .catch(e => console.log(e.message))
     }
-  }
+  },
+
 }
 </script>
 

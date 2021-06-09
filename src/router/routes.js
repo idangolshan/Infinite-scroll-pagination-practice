@@ -1,7 +1,7 @@
 
 const routes = [
   { path: '/flex', name:'flex', meta:{auth:true} ,component: () => import('pages/flex.vue') },
-  { path: '/courses', name:'courses',meta:{auth:true}, component: () => import('pages/courses.vue') },
+  { path: '/courses', name:'admin-courses',meta:{auth:true}, component: () => import('pages/courses.vue') },
   { path: '/admin', name:'admin-back',meta:{auth:true}, component: () => import('pages/AdminPage.vue') },
   {
     path: '/',

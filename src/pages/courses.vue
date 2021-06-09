@@ -1,8 +1,6 @@
 <template>
   <div>
-  <div class="inputs">
-
-  </div>
+  <h3>THIS IS ALSO Only ADMINS PAGE</h3>
 
   </div>
 </template>
