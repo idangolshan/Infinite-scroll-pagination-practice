@@ -3,6 +3,7 @@ const routes = [
   { path: '/flex', name:'flex', meta:{auth:true} ,component: () => import('pages/flex.vue') },
   { path: '/courses', name:'admin-courses',meta:{auth:true}, component: () => import('pages/courses.vue') },
   { path: '/admin', name:'admin-back',meta:{auth:true}, component: () => import('pages/AdminPage.vue') },
+  { path: '/connect', name:'connect',meta:{auth:true}, component: () => import('pages/ComponentsConection') },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
