@@ -11,10 +11,15 @@ const authentication = () => {
   return firebase.auth()
 }
 
+const db = () => {
+  return firebase.firestore()
+};
+
 
 
 export default {
   firebase,
   fbInit,
   authentication,
+  db
 }

@@ -3,7 +3,9 @@ const routes = [
   { path: '/flex', name:'flex', meta:{auth:true} ,component: () => import('pages/flex.vue') },
   { path: '/courses', name:'admin-courses',meta:{auth:true}, component: () => import('pages/courses.vue') },
   { path: '/admin', name:'admin-back',meta:{auth:true}, component: () => import('pages/AdminPage.vue') },
-  { path: '/connect', name:'connect',meta:{auth:true}, component: () => import('pages/ComponentsConection') },
+  { path: '/connect', name:'connect',meta:{auth:true}, component: () => import('pages/ComponentsConection'), },
+  { path: '/feed', name:'feed',meta:{auth:false}, component: () => import('pages/feed'), },
+  { path: '/feed-two', name:'feed',meta:{auth:false}, component: () => import('pages/feedTwo'), },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),

@@ -28,36 +28,37 @@ export default function (/* { store, ssrContext } */) {
 
   const admins = ["9WSXofCX11etRvNluLRmMdWUD032",'SbbazknQxvNGR3c9J5w32bDci9H22','jkl5j3kl54jkl43jklfdksljl', 'rewrwerewrew2343223'];
 
-  Router.beforeEach((to,from,next)=> {
-    // const user = JSON.parse(localStorage.getItem('practice'));
-    // const adminPage = to.name.startsWith('admin');
-    // const admin = admins.includes(user);
-    //
-    // if(!user && to.meta.auth) {
-    //   next('/');
-    // } else if (user && adminPage && !admin) {
-    //   next('/flex');
-    // }  else
-    console.log(`%cHELLO OFEK`, "font-size:30px;background: red;")
-    /*
-    * if user not exist push to the login page.
-    * if user exist, push to home.
-    * if user is also admin לתת הרשאה לבק אופיס.
-    * if user exist and try to access to login page - push to home;
-    *
-    *  */
-    const user = JSON.parse(localStorage.getItem('practice'));
-    const isAdmin = admins.includes(user);
-    const adminsPages = to.name.startsWith('admin');
-    const authPage = to.meta.auth;
-
-    if(!user)
-      next('/')
-    else if (user && !isAdmin && adminsPages)
-      next('/flex')
-    else next()
-
-  })
+  // Router.beforeEach((to,from,next)=> {
+  //   // const user = JSON.parse(localStorage.getItem('practice'));
+  //   // const adminPage = to.name.startsWith('admin');
+  //   // const admin = admins.includes(user);
+  //   //
+  //   // if(!user && to.meta.auth) {
+  //   //   next('/');
+  //   // } else if (user && adminPage && !admin) {
+  //   //   next('/flex');
+  //   // }  else
+  //   console.log(`%cHELLO OFEK`, "font-size:30px;background: red;")
+  //   /*
+  //   * if user not exist push to the login page.
+  //   * if user exist, push to home.
+  //   * if user is also admin לתת הרשאה לבק אופיס.
+  //   * if user exist and try to access to login page - push to home;
+  //   *
+  //   *  */
+  //   // const user = JSON.parse(localStorage.getItem('practice'));
+  //   // const isAdmin = admins.includes(user);
+  //   // const adminsPages = to.name.startsWith('admin');
+  //   // const authPage = to.meta.auth;
+  //
+  //   // if(!user)
+  //   //   next('/')
+  //   // else if (user && !isAdmin && adminsPages)
+  //   //   next('/flex')
+  //   // else
+  //   //   next()
+  //
+  // })
 
   return Router
 }

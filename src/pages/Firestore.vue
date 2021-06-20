@@ -22,7 +22,7 @@
 <script>
 
 
-import fbi from '../middleware/firebase/index'
+import fbi from '../middleware/firebase'
 export default {
   name: "Firestore",
   created() {
