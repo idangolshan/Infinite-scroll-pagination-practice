@@ -1,16 +1,20 @@
 <template>
-  <div class ='posts-group' id="body" ref="infoBox">
-    <div class="container" v-for="r in arr">
-      <div class="card">
-        <h3> נושא הפוסט: {{ r.title }} </h3>
-        <p> נכתב ע"י: {{ r.sender }} </p>
-        <p>להשלים את הקיז הנכונים לפלאש פוינט</p>
+  <div>
+    <div class ='posts-group' id="body" >
+      <div class="container" v-for="r in arr" >
+        <div class="card">
+          <h3> נושא הפוסט: {{ r.title }} </h3>
+          <p> נכתב ע"י: {{ r.sender }} </p>
+<!--          <p>להשלים את הקיז הנכונים לפלאש פוינט</p>-->
+        </div>
+      </div>
+      <div class="loadMore" >
+        <q-btn @click="!data.empty && extractPosts()"> טען עוד </q-btn>
       </div>
     </div>
-    <div class="loadMore">
-      <q-btn @click="!data.empty && extractPosts()"> טען עוד </q-btn>
-    </div>
+    <div class="loading" v-model="loading" v-show="loading" dir="rtl">  טוען פוסטים... </div>
   </div>
+
 </template>
 
 <script>
@@ -21,74 +25,46 @@ export default {
   name: "feed",
   data() {
     return {
-      // container: '',
       arr: [],
-      // data: {},
-      // body: document.querySelector('body')
+      data: {},
+      // Catches into a variable the loading class from the DOM
+      loading: false
 
     }
   },
   mounted() {
     // Detect when scrolled to bottom.
-    const listElm = document.querySelector('#body');
+    const postsElm = document.querySelector('#body');
 
-    listElm.addEventListener('scroll', e => {
-      console.log(listElm.scrollTop)
-      console.log(listElm.clientHeight)
-      console.log(listElm.scrollHeight)
-      if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
+    // Initially load some items.
+    this.extractPosts();
+
+    // User scroll tracking & activating an action
+    postsElm.addEventListener('scroll', e => {
+      // console.log(postsElm.scrollTop, 'scroll Topppppppp')
+      // console.log(postsElm.clientHeight, 'client Heightttt')
+      // console.log(postsElm.scrollHeight, 'scroll Heightttt')
+      // console.log(this.data.empty)
+      if (postsElm.scrollTop + postsElm.clientHeight >= postsElm.scrollHeight && !this.data.empty) {
         this.extractPosts();
       }
     });
 
-    // Initially load some items.
-    this.extractPosts();
+
   },
 
-    // this.$refs.infoBox.focus()
-    // addEventListener('scroll', ()=> {
-    //   console.log(this.$refs.infoBox.scrollHeight)
-    //   console.log(window.scrollY)
-    //   console.log('TOTAL:', this.$refs.infoBox.scrollHeight - window.scrollY)
-    //   console.log('OFFESET', window.pageYOffset)
-    // })
-
   methods: {
+    // Activating the GetPostsFromDB in the index file
     async extractPosts() {
+      this.loading = true; // Loading text appears
       this.data = await firestore.GetPostsFromDB()
       this.data.docs.forEach(doc => {
         const post = doc.data();
         this.arr.push(post)
       })
+      this.loading = false; // Loading text disappears
+
     },
-
-    // handleScroll(event) {
-    //   console.log(this.$refs.infoBox.$el.clientHeight, 'clientHeight')
-    //   console.log('scrolling')
-    //   console.log('this.body.scrollHeight', this.body.scrollHeight)
-    //   let triggerHeight = this.body.scrollTop + this.body.offsetHeight;
-    //   debugger
-    //   if (triggerHeight === this.body.scrollHeight) {
-    //     debugger
-    //     this.extractPosts()
-    //   }
-    // let triggerHeight = this.container.scrollTop + this.container.offsetHeight;
-    // debugger
-    // if (triggerHeight >= this.container.scrollHeight) {
-    //
-    // }
-    //   }
-    //
-    // },
-
-    // created() {
-    //   this.extractPosts()
-    //   // window.addEventListener('scroll', this.handleScroll);
-    // },
-
-    // destroyed() {
-    //   window.removeEventListener('scroll', this.handleScroll);
-    // },
   }
 }
 </script>
@@ -96,24 +72,25 @@ export default {
 <style scoped>
 
 .posts-group {
-  height: 80vh;
+  height: 90vh;
   background: #f2f2f2f2;
-  display: flex;
+  display: block;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin: 10px auto;
   padding: 20px;
-  /*max-height: 80%;*/
-  /*box-sizing: border-box;*/
+  /*  scroll stuff*/
+  max-height: 80%;
+  box-sizing: border-box;
   overflow: auto;
 }
-.posts-group::-webkit-scrollbar {
-  display: none;
-}
+/*.posts-group::-webkit-scrollbar {*/
+/*  display: none;*/
+/*}*/
 
 .container {
-
+/*background: #1D1D1D;*/
   direction: rtl;
   display: flex;
   flex-direction: column;
@@ -122,17 +99,13 @@ export default {
   width: 960px;
   margin: 10px auto;
   padding: 20px;
-  /*  scroll stuff*/
-  /*max-height: 80%;*/
-  /*box-sizing: border-box;*/
-  /*overflow: auto;*/
 }
 
 .card {
   background: white;
   padding: 10px 20px;
   border-radius: 10px;
-  margin: 20px auto;
+  margin: 40px auto;
   font-size: 1.2em;
 }
 
@@ -149,6 +122,29 @@ export default {
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  display: none;
+  /*display: none;*/
 }
+
+.loading {
+  display: block;
+  font-size: 2em;
+  text-align: center;
+  margin: 5px 0;
+  bottom: 80px;
+  left: 50%;
+  top: 50%;
+  /*border: 16px solid #f3f3f3; !* Light grey *!*/
+  /*border-top: 16px solid #3498db; !* Blue *!*/
+  /*border-radius: 50%;*/
+  /*width: 120px;*/
+  /*height: 120px;*/
+  /*animation: spin 2s linear infinite;*/
+  /*align-items: center;*/
+  /*position: absolute;*/
+}
+/*@keyframes spin {*/
+/*  0% { transform: rotate(0deg); }*/
+/*  100% { transform: rotate(360deg); }*/
+/*}*/
+
 </style>
