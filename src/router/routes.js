@@ -6,6 +6,7 @@ const routes = [
   { path: '/connect', name:'connect',meta:{auth:true}, component: () => import('pages/ComponentsConection'), },
   { path: '/feed', name:'feed',meta:{auth:false}, component: () => import('pages/feed'), },
   { path: '/feed-two', name:'feed',meta:{auth:false}, component: () => import('pages/feedTwo'), },
+  { path: '/collection', name:'feed',meta:{auth:false}, component: () => import('pages/CollectionGroup'), },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),

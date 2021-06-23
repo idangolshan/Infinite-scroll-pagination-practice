@@ -3,8 +3,9 @@
     <div class ='posts-group' id="body" >
       <div class="container" v-for="r in arr" >
         <div class="card">
-          <h3> נושא הפוסט: {{ r.title }} </h3>
-          <p> נכתב ע"י: {{ r.sender }} </p>
+          <h3> נושא הפוסט: {{ r.name }} </h3>
+          <p> נכתב ע"י: {{ r.id }} </p>
+          <p> תאריך: {{ r.time }} </p>
 <!--          <p>להשלים את הקיז הנכונים לפלאש פוינט</p>-->
         </div>
       </div>
@@ -25,11 +26,12 @@ export default {
   name: "feed",
   data() {
     return {
+      // All posts pushed to an array
       arr: [],
+      // insert to an object every post
       data: {},
       // Catches into a variable the loading class from the DOM
       loading: false
-
     }
   },
   mounted() {
@@ -41,29 +43,27 @@ export default {
 
     // User scroll tracking & activating an action
     postsElm.addEventListener('scroll', e => {
-      // console.log(postsElm.scrollTop, 'scroll Topppppppp')
-      // console.log(postsElm.clientHeight, 'client Heightttt')
-      // console.log(postsElm.scrollHeight, 'scroll Heightttt')
-      // console.log(this.data.empty)
-      if (postsElm.scrollTop + postsElm.clientHeight >= postsElm.scrollHeight && !this.data.empty) {
+      // scrollTop: how much the usr scrolled,
+      // clientHeight - the screen real estate of the user's device,
+      // scrollHeight - the 'whole' screen - the bottom of the screen.
+      if (postsElm.scrollTop + postsElm.clientHeight >= postsElm.scrollHeight
+        && !this.data.empty) {
         this.extractPosts();
       }
     });
 
-
   },
 
   methods: {
-    // Activating the GetPostsFromDB in the index file
+    // Activating the getPostsFromDB in the index file
     async extractPosts() {
       this.loading = true; // Loading text appears
-      this.data = await firestore.GetPostsFromDB()
+      this.data = await firestore.getPostsFromDB()
       this.data.docs.forEach(doc => {
         const post = doc.data();
         this.arr.push(post)
       })
       this.loading = false; // Loading text disappears
-
     },
   }
 }
@@ -85,15 +85,15 @@ export default {
   box-sizing: border-box;
   overflow: auto;
 }
-/*.posts-group::-webkit-scrollbar {*/
-/*  display: none;*/
-/*}*/
+.posts-group::-webkit-scrollbar {
+  /*display: none;*/
+}
 
 .container {
 /*background: #1D1D1D;*/
   direction: rtl;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   width: 960px;
@@ -122,7 +122,7 @@ export default {
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  /*display: none;*/
+  display: none;
 }
 
 .loading {
@@ -133,18 +133,18 @@ export default {
   bottom: 80px;
   left: 50%;
   top: 50%;
-  /*border: 16px solid #f3f3f3; !* Light grey *!*/
-  /*border-top: 16px solid #3498db; !* Blue *!*/
-  /*border-radius: 50%;*/
-  /*width: 120px;*/
-  /*height: 120px;*/
-  /*animation: spin 2s linear infinite;*/
-  /*align-items: center;*/
-  /*position: absolute;*/
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 0.1s linear infinite;
+  align-items: center;
+  position: absolute;
 }
-/*@keyframes spin {*/
-/*  0% { transform: rotate(0deg); }*/
-/*  100% { transform: rotate(360deg); }*/
-/*}*/
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 </style>
