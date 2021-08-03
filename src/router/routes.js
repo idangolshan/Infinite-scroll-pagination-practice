@@ -7,6 +7,7 @@ const routes = [
   { path: '/feed', name:'feed',meta:{auth:false}, component: () => import('pages/feed'), },
   { path: '/feed-two', name:'feed',meta:{auth:false}, component: () => import('pages/feedTwo'), },
   { path: '/collection', name:'feed',meta:{auth:false}, component: () => import('pages/CollectionGroup'), },
+  { path: '/cssTrainingIdan', name:'cssTrainingIdan',meta:{auth:false}, component: () => import('pages/cssTrainingIdan'), },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
